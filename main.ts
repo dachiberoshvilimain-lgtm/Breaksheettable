@@ -1,5 +1,3 @@
-import { serve } from "https://deno.land/std@0.208.0/http/server.ts";
-
 let stored: unknown = null;
 
 const HTML = `<!DOCTYPE html>
@@ -169,7 +167,7 @@ loadData();
 </body>
 </html>`;
 
-serve(async (req) => {
+Deno.serve(async (req: Request) => {
   const url = new URL(req.url);
 
   if (url.pathname === "/data" && req.method === "GET") {
